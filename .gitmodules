@@ -1,0 +1,6 @@
+[submodule "example/kakaolink-ios-example/external/yajl-objc"]
+	path = example/kakaolink-ios-example/external/yajl-objc
+	url = https://github.com/gabriel/yajl-objc.git
+[submodule "example/kakaolink-ios-example/external/JSONKit"]
+	path = example/kakaolink-ios-example/external/JSONKit
+	url = https://github.com/johnezang/JSONKit.git
