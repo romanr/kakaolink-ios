@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "KakaoLinkCenter.h"
 
 @interface ViewController ()
 
@@ -14,21 +15,32 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+-(IBAction)kakaoLink:(id)sender {
+    NSMutableArray *metaInfoArray = [NSMutableArray array];
+    
+    NSDictionary *metaInfoAndroid = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"android", @"os",
+                                     @"phone", @"devicetype",
+                                     @"market://details?id=com.kakao.talk", @"installurl",
+                                     @"example://example", @"executeurl",
+                                     nil];
+    
+    NSDictionary *metaInfoIOS = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"ios", @"os",
+                                 @"phone", @"devicetype",
+                                 @"http://itunes.apple.com/app/id362057947?mt=8", @"installurl", 
+                                 @"example://example", @"executeurl",
+                                 nil];
+    
+    [metaInfoArray addObject:metaInfoAndroid];
+    [metaInfoArray addObject:metaInfoIOS];
+    
+    [KakaoLinkCenter openKakaoAppLinkWithMessage:@"First KakaoLink Message"
+                                             URL:@"http://link.kakao.com/?test-ios-app"
+                                     appBundleID:[[NSBundle mainBundle] bundleIdentifier]
+                                      appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+                                         appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+                                   metaInfoArray:metaInfoArray];
 }
 
 @end

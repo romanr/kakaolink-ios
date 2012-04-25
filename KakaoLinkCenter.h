@@ -18,12 +18,6 @@
 + (BOOL)canOpenKakaoLink;
 
 /**
- * Gets a kakaolink URL for parameters.
- */
-+ (NSString *)kakaoLinkURLStringForParameters:(NSDictionary *)parameters;
-
-
-/**
  * Opens kakaolink with parameters.
  */
 + (BOOL)openKakaoLinkWithURL:(NSString *)referenceURLString
