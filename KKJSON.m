@@ -6,16 +6,16 @@
 //
 
 #import "KKJSON.h"
-#import "JSONKit.h"
 
 #define USE_JSONKit
 
 #ifdef USE_JSONKit
+#import "JSONKit.h"
 
 // deserializing
 @implementation NSData (KKJSON)
 
-- (id)KTobjectFromJSONData
+- (id)KKobjectFromJSONData
 {
     return [self objectFromJSONData];
 }
@@ -24,7 +24,7 @@
 
 @implementation NSString (KKJSON)
 
-- (id)KTobjectFromJSONString
+- (id)KKobjectFromJSONString
 {
     return [self objectFromJSONString];
 }
@@ -59,12 +59,21 @@
 }
 
 @end
+#endif
 
-#elif USE_YAJL
+#ifdef USE_YAJL
+#import <YAJLiOS/YAJL.h>
+
+/*
+ When use YAJLiOS, don't forget for build settings
+ - Other Linker Flags : -all_load -ObjC
+ - Framework Search Paths
+ */
+
 // deserializing
 @implementation NSData (KKJSON)
 
-- (id)KTobjectFromJSONData
+- (id)KKobjectFromJSONData
 {
     return [self yajl_JSON];
 }
@@ -73,7 +82,7 @@
 
 @implementation NSString (KKJSON)
 
-- (id)KTobjectFromJSONString
+- (id)KKobjectFromJSONString
 {
     return [self yajl_JSON];
 }

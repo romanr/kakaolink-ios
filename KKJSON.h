@@ -10,13 +10,13 @@
 
 @interface NSData (KKJSON)
 
-- (id)KTobjectFromJSONData;
+- (id)KKobjectFromJSONData;
 
 @end
 
 @interface NSString (KKJSON)
 
-- (id)KTobjectFromJSONString;
+- (id)KKobjectFromJSONString;
 
 @end
 
