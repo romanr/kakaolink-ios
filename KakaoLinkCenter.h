@@ -4,10 +4,6 @@
 // @version 2.0
 //
 
-#ifndef __IPHONE_3_0
-#error "This class uses features only available in iPhone SDK 3.0 and later."
-#endif
-
 @interface KakaoLinkCenter : NSObject {
 @private
 }

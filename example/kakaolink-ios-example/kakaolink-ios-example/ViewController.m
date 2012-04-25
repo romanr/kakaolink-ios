@@ -9,10 +9,6 @@
 #import "ViewController.h"
 #import "KakaoLinkCenter.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
 
 -(IBAction)kakaoLink:(id)sender {
