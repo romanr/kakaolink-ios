@@ -12,6 +12,10 @@
 @implementation ViewController
 
 -(IBAction)kakaoLink:(id)sender {
+    if (![KakaoLinkCenter canOpenKakaoLink]) {
+        return;
+    }
+
     NSMutableArray *metaInfoArray = [NSMutableArray array];
     
     NSDictionary *metaInfoAndroid = [NSDictionary dictionaryWithObjectsAndKeys:
