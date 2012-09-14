@@ -43,4 +43,67 @@
                                    metaInfoArray:metaInfoArray];
 }
 
+- (IBAction)sendTextOnlyStorylinkAction:(id)sender
+{
+	if (![KakaoLinkCenter canOpenStoryLink]) {
+		return;
+	}
+	
+	[KakaoLinkCenter openStoryLinkWithPost:@"text from StoryLink"
+							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
+								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+								   urlInfo:nil];
+}
+
+- (IBAction)sendStorylinkHasCorrectUrlInfoAction:(id)sender
+{
+	if (![KakaoLinkCenter canOpenStoryLink]) {
+		return;
+	}
+	
+	NSDictionary *urlInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+								 @"CloudAthlas", @"title",
+								 @"blahblahblah", @"desc",
+								 @"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg", @"imageurl",
+								 nil];
+	
+	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
+								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+								   urlInfo:urlInfoDict];
+}
+
+- (IBAction)sendStorylinkWithoutUrlInfoAction:(id)sender
+{
+	if (![KakaoLinkCenter canOpenStoryLink]) {
+		return;
+	}
+	
+	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
+								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+								   urlInfo:nil];
+}
+
+- (IBAction)sendStorylinkHasIncorrectUrlInfoAction:(id)sender
+{
+	if (![KakaoLinkCenter canOpenStoryLink]) {
+		return;
+	}
+	
+	NSDictionary *urlInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:
+								 @"blahblahblah", @"desc",
+								 @"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg", @"imageurl",
+								 nil];
+	
+	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
+								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+								   urlInfo:urlInfoDict];
+}
+
 @end

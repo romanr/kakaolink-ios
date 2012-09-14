@@ -34,4 +34,19 @@
 							appName:(NSString *)appName
 					  metaInfoArray:(NSArray *)metaInfoArray;
 
+
+/**
+ * Returns whether the application can open storylink URLs.
+ */
++ (BOOL)canOpenStoryLink;
+
+/**
+ * Opens Storylink with parameters.
+ */
++ (BOOL)openStoryLinkWithPost:(NSString *)post
+				  appBundleID:(NSString *)appBundleID
+				   appVersion:(NSString *)appVersion
+					  appName:(NSString *)appName
+					  urlInfo:(NSDictionary *)urlInfoDict;
+
 @end

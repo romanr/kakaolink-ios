@@ -41,7 +41,7 @@
 		8EEA66AF1547C65B0048DD0F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8EEA66B21547C65B0048DD0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		8EEA66BE1547C7100048DD0F /* KakaoLinkCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KakaoLinkCenter.h; path = ../../KakaoLinkCenter.h; sourceTree = "<group>"; };
-		8EEA66BF1547C7100048DD0F /* KakaoLinkCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KakaoLinkCenter.m; path = ../../KakaoLinkCenter.m; sourceTree = "<group>"; };
+		8EEA66BF1547C7100048DD0F /* KakaoLinkCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KakaoLinkCenter.m; path = ../../KakaoLinkCenter.m; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
