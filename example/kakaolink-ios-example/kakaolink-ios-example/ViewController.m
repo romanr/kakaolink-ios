@@ -62,13 +62,14 @@
 		return;
 	}
 	
+	NSArray *imageArray = [NSArray arrayWithObject:@"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg"];
 	NSDictionary *urlInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"CloudAthlas", @"title",
 								 @"blahblahblah", @"desc",
-								 @"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg", @"imageurl",
+								 imageArray, @"imageurl",
 								 nil];
 	
-	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+	[KakaoLinkCenter openStoryLinkWithPost:@"text from Storylink http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
 							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
 								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
@@ -81,7 +82,7 @@
 		return;
 	}
 	
-	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+	[KakaoLinkCenter openStoryLinkWithPost:@"text from Storylink http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
 							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
 								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
@@ -94,12 +95,13 @@
 		return;
 	}
 	
+	NSArray *imageArray = [NSArray arrayWithObject:@"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg"];
 	NSDictionary *urlInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:
 								 @"blahblahblah", @"desc",
-								 @"http://i4.ytimg.com/vi/gU2-ZMWm0xc/default.jpg", @"imageurl",
+								 imageArray, @"imageurl",
 								 nil];
 	
-	[KakaoLinkCenter openStoryLinkWithPost:@"http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec"
+	[KakaoLinkCenter openStoryLinkWithPost:@"text from Storylink http://www.youtube.com/watch?v=gU2-ZMWm0xc&feature=g-vrec story posting"
 							   appBundleID:[[NSBundle mainBundle] bundleIdentifier]
 								appVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 								   appName:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
