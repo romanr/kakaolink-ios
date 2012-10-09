@@ -29,21 +29,41 @@ static NSString *HTTPArgumentsStringForParameters(NSDictionary *parameters) {
 static NSString *const KakaoLinkApiVerstion = @"2.0";
 static NSString *const KakaoLinkURLBaseString = @"kakaolink://sendurl";
 
+static NSString *const StoryLinkApiVersion = @"1.0";
+static NSString *const StoryLinkURLBaseString = @"storylink://posting";
+
 @implementation KakaoLinkCenter
 
 #pragma mark -
 
-+ (NSString *)kakaoLinkURLStringForParameters:(NSDictionary *)parameters {
++ (NSString *)URLStringForParameters:(NSDictionary *)parameters baseString:(NSString *)baseString {
 	NSString *argumentsString = HTTPArgumentsStringForParameters(parameters);
-	NSString *URLString = [NSString stringWithFormat:@"%@?%@", KakaoLinkURLBaseString, argumentsString];
+	NSString *URLString = [NSString stringWithFormat:@"%@?%@", baseString, argumentsString];
 	return URLString;
+}
+
+// for KakaoLink
+
++ (NSString *)kakaoLinkURLStringForParameters:(NSDictionary *)parameters {
+	return [self URLStringForParameters:parameters baseString:KakaoLinkURLBaseString];
 }
 
 + (BOOL)openKakaoLinkWithParams:(NSDictionary *)params {
     NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:params];
     [_params setObject:KakaoLinkApiVerstion forKey:@"apiver"];
-    
     return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self kakaoLinkURLStringForParameters:_params]]];
+}
+
+// for StoryLink
+
++ (NSString *)storyLinkURLStringForParameters:(NSDictionary *)parameters {
+	return [self URLStringForParameters:parameters baseString:StoryLinkURLBaseString];
+}
+
++ (BOOL)openStoryLinkWithParams:(NSDictionary *)params {
+    NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:params];
+    [_params setObject:StoryLinkApiVersion forKey:@"apiver"];
+    return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self storyLinkURLStringForParameters:_params]]];
 }
 
 #pragma mark -
@@ -100,4 +120,33 @@ static NSString *const KakaoLinkURLBaseString = @"kakaolink://sendurl";
     
 	return [self openKakaoLinkWithParams:parameters];
 }
+
+
++ (BOOL)canOpenStoryLink {
+	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:StoryLinkURLBaseString]];
+}
+
++ (BOOL)openStoryLinkWithPost:(NSString *)post
+				  appBundleID:(NSString *)appBundleID
+				   appVersion:(NSString *)appVersion
+					  appName:(NSString *)appName
+					  urlInfo:(NSDictionary *)urlInfoDict {
+	
+	if (!post|| !appBundleID || !appVersion || !appName)
+		return NO;
+	
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+									   post, @"post",
+									   appBundleID, @"appid",
+									   appVersion, @"appver",
+									   appName, @"appname",
+									   nil];
+	
+	if (urlInfoDict.count > 0) {
+		[parameters setObject:[urlInfoDict KKJSONString] forKey:@"urlInfo"];
+	}
+	
+	return [self openStoryLinkWithParams:parameters];
+}
+
 @end
