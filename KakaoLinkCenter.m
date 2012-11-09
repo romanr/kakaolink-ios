@@ -143,7 +143,7 @@ static NSString *const StoryLinkURLBaseString = @"storylink://posting";
 									   nil];
 	
 	if (urlInfoDict.count > 0) {
-		[parameters setObject:[urlInfoDict JSONString] forKey:@"urlInfo"];
+		[parameters setObject:[urlInfoDict JSONString] forKey:@"urlinfo"];
 	}
 	
 	return [self openStoryLinkWithParams:parameters];
